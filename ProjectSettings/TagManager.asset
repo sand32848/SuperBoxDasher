@@ -44,6 +44,9 @@ TagManager:
   - name: Background
     uniqueID: 3682499811
     locked: 0
+  - name: Particle
+    uniqueID: 3147472043
+    locked: 0
   - name: Player
     uniqueID: 3417514595
     locked: 0

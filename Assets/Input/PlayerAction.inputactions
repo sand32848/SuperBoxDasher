@@ -15,21 +15,30 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "DashStart",
-                    "type": "Button",
+                    "name": "LeftHold",
+                    "type": "Value",
                     "id": "cc5d65bf-ef5d-48ef-9f98-e4b3cd09747b",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Integer",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Hold",
                     "initialStateCheck": true
                 },
                 {
-                    "name": "DashRelease",
+                    "name": "LeftRelease",
                     "type": "Button",
                     "id": "8556b942-e4ac-4695-b6c9-8d1c2c014cfd",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press(behavior=1)",
+                    "interactions": "Press(behavior=2)",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "MousePos",
+                    "type": "Value",
+                    "id": "db0bc30d-0aaf-439a-bbe3-da55d9d7266d",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
                     "initialStateCheck": true
                 }
             ],
@@ -44,28 +53,6 @@
                     "action": "PlayerMovement",
                     "isComposite": true,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "07e758bf-1a71-41c3-bba8-a1cf3b637fee",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "PlayerMovement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "45819bfb-94ef-4297-99ff-0ec90e0a087c",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "PlayerMovement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 },
                 {
                     "name": "left",
@@ -96,7 +83,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "DashRelease",
+                    "action": "LeftRelease",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -107,7 +94,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "DashStart",
+                    "action": "LeftHold",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "476c470b-667c-459c-be2a-4415ee49102a",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MousePos",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

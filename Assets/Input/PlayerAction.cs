@@ -37,21 +37,30 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""DashStart"",
-                    ""type"": ""Button"",
+                    ""name"": ""LeftHold"",
+                    ""type"": ""Value"",
                     ""id"": ""cc5d65bf-ef5d-48ef-9f98-e4b3cd09747b"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Integer"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Hold"",
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""DashRelease"",
+                    ""name"": ""LeftRelease"",
                     ""type"": ""Button"",
                     ""id"": ""8556b942-e4ac-4695-b6c9-8d1c2c014cfd"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press(behavior=1)"",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MousePos"",
+                    ""type"": ""Value"",
+                    ""id"": ""db0bc30d-0aaf-439a-bbe3-da55d9d7266d"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
                     ""initialStateCheck"": true
                 }
             ],
@@ -66,28 +75,6 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""action"": ""PlayerMovement"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""07e758bf-1a71-41c3-bba8-a1cf3b637fee"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""PlayerMovement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""45819bfb-94ef-4297-99ff-0ec90e0a087c"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""PlayerMovement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""left"",
@@ -118,7 +105,7 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""DashRelease"",
+                    ""action"": ""LeftRelease"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -129,7 +116,18 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""DashStart"",
+                    ""action"": ""LeftHold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""476c470b-667c-459c-be2a-4415ee49102a"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MousePos"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -141,8 +139,9 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         // PlayerControl
         m_PlayerControl = asset.FindActionMap("PlayerControl", throwIfNotFound: true);
         m_PlayerControl_PlayerMovement = m_PlayerControl.FindAction("PlayerMovement", throwIfNotFound: true);
-        m_PlayerControl_DashStart = m_PlayerControl.FindAction("DashStart", throwIfNotFound: true);
-        m_PlayerControl_DashRelease = m_PlayerControl.FindAction("DashRelease", throwIfNotFound: true);
+        m_PlayerControl_LeftHold = m_PlayerControl.FindAction("LeftHold", throwIfNotFound: true);
+        m_PlayerControl_LeftRelease = m_PlayerControl.FindAction("LeftRelease", throwIfNotFound: true);
+        m_PlayerControl_MousePos = m_PlayerControl.FindAction("MousePos", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -203,15 +202,17 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_PlayerControl;
     private IPlayerControlActions m_PlayerControlActionsCallbackInterface;
     private readonly InputAction m_PlayerControl_PlayerMovement;
-    private readonly InputAction m_PlayerControl_DashStart;
-    private readonly InputAction m_PlayerControl_DashRelease;
+    private readonly InputAction m_PlayerControl_LeftHold;
+    private readonly InputAction m_PlayerControl_LeftRelease;
+    private readonly InputAction m_PlayerControl_MousePos;
     public struct PlayerControlActions
     {
         private @PlayerAction m_Wrapper;
         public PlayerControlActions(@PlayerAction wrapper) { m_Wrapper = wrapper; }
         public InputAction @PlayerMovement => m_Wrapper.m_PlayerControl_PlayerMovement;
-        public InputAction @DashStart => m_Wrapper.m_PlayerControl_DashStart;
-        public InputAction @DashRelease => m_Wrapper.m_PlayerControl_DashRelease;
+        public InputAction @LeftHold => m_Wrapper.m_PlayerControl_LeftHold;
+        public InputAction @LeftRelease => m_Wrapper.m_PlayerControl_LeftRelease;
+        public InputAction @MousePos => m_Wrapper.m_PlayerControl_MousePos;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -224,12 +225,15 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 @PlayerMovement.started -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnPlayerMovement;
                 @PlayerMovement.performed -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnPlayerMovement;
                 @PlayerMovement.canceled -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnPlayerMovement;
-                @DashStart.started -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnDashStart;
-                @DashStart.performed -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnDashStart;
-                @DashStart.canceled -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnDashStart;
-                @DashRelease.started -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnDashRelease;
-                @DashRelease.performed -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnDashRelease;
-                @DashRelease.canceled -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnDashRelease;
+                @LeftHold.started -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnLeftHold;
+                @LeftHold.performed -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnLeftHold;
+                @LeftHold.canceled -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnLeftHold;
+                @LeftRelease.started -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnLeftRelease;
+                @LeftRelease.performed -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnLeftRelease;
+                @LeftRelease.canceled -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnLeftRelease;
+                @MousePos.started -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnMousePos;
+                @MousePos.performed -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnMousePos;
+                @MousePos.canceled -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnMousePos;
             }
             m_Wrapper.m_PlayerControlActionsCallbackInterface = instance;
             if (instance != null)
@@ -237,12 +241,15 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 @PlayerMovement.started += instance.OnPlayerMovement;
                 @PlayerMovement.performed += instance.OnPlayerMovement;
                 @PlayerMovement.canceled += instance.OnPlayerMovement;
-                @DashStart.started += instance.OnDashStart;
-                @DashStart.performed += instance.OnDashStart;
-                @DashStart.canceled += instance.OnDashStart;
-                @DashRelease.started += instance.OnDashRelease;
-                @DashRelease.performed += instance.OnDashRelease;
-                @DashRelease.canceled += instance.OnDashRelease;
+                @LeftHold.started += instance.OnLeftHold;
+                @LeftHold.performed += instance.OnLeftHold;
+                @LeftHold.canceled += instance.OnLeftHold;
+                @LeftRelease.started += instance.OnLeftRelease;
+                @LeftRelease.performed += instance.OnLeftRelease;
+                @LeftRelease.canceled += instance.OnLeftRelease;
+                @MousePos.started += instance.OnMousePos;
+                @MousePos.performed += instance.OnMousePos;
+                @MousePos.canceled += instance.OnMousePos;
             }
         }
     }
@@ -250,7 +257,8 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
     public interface IPlayerControlActions
     {
         void OnPlayerMovement(InputAction.CallbackContext context);
-        void OnDashStart(InputAction.CallbackContext context);
-        void OnDashRelease(InputAction.CallbackContext context);
+        void OnLeftHold(InputAction.CallbackContext context);
+        void OnLeftRelease(InputAction.CallbackContext context);
+        void OnMousePos(InputAction.CallbackContext context);
     }
 }

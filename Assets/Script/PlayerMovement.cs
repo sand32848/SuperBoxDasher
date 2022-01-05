@@ -6,25 +6,19 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed;
     private Rigidbody2D rb;
-    private InputTaker inputTaker;
+    private InputController inputController;
 
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        inputTaker = GetComponent<InputTaker>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-      
+        inputController = GetComponent<InputController>();
     }
 
 	private void FixedUpdate()
 	{
-        MovePlayer(inputTaker.movement.ReadValue<Vector2>());
+        MovePlayer(inputController.movement);
     }
 
 	public void MovePlayer(Vector2 dir = new Vector2())
