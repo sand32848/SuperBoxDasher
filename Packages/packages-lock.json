@@ -1,5 +1,21 @@
 {
   "dependencies": {
+    "com.github.superunitybuild.buildactions": {
+      "version": "2.1.1",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.github.superunitybuild.buildtool": "2.1.0"
+      },
+      "url": "https://package.openupm.com"
+    },
+    "com.github.superunitybuild.buildtool": {
+      "version": "5.0.2",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://package.openupm.com"
+    },
     "com.unity.2d.animation": {
       "version": "5.0.9",
       "depth": 0,

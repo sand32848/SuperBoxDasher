@@ -1029,6 +1029,7 @@ GameObject:
   - component: {fileID: 562694273}
   - component: {fileID: 562694274}
   - component: {fileID: 562694275}
+  - component: {fileID: 562694276}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -1333,6 +1334,19 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &562694276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 562694267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d31ee625bb252d74f830c60e7d775bac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particle: {fileID: 8436765190688452597, guid: 4917eb1453cbdd141b7a7f45127136c5, type: 3}
 --- !u!1 &566458490
 GameObject:
   m_ObjectHideFlags: 0
@@ -2341,7 +2355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d9ee8ac01053e6448278b8d6c12b49b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 7
+  timer: 2
 --- !u!114 &1068678889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3192,7 +3206,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1715368888}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.6, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 4.0168, y: 4.0168, z: 4.0168}
   m_Children: []
   m_Father: {fileID: 1131927833}
@@ -4569,7 +4583,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
   EmissionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 4
     rateOverTime:
       serializedVersion: 2

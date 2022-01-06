@@ -134,7 +134,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 1.0
+  bundleVersion: 1.0.0.14
   preloadedAssets:
   - {fileID: 11400000, guid: 244bc66b6955a044496c9bd886aea675, type: 2}
   metroInputSource: 0
@@ -155,12 +155,13 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Standalone: com.DefaultCompany.SuperBoxDasher
+    WebGL: com.DefaultCompany.SuperBoxDasher
   buildNumber:
-    Standalone: 0
-    iPhone: 0
+    Standalone: 14
+    iPhone: 14
     tvOS: 0
-  overrideDefaultApplicationIdentifier: 0
-  AndroidBundleVersionCode: 1
+  overrideDefaultApplicationIdentifier: 1
+  AndroidBundleVersionCode: 15
   AndroidMinSdkVersion: 19
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
@@ -562,7 +563,7 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
-    1: UNITY_POST_PROCESSING_STACK_V2
+    1: BUILD_TYPE_NEWRELEASETYPE;BUILD_PLATFORM_PC;BUILD_ARCH_WINDOWSX86;UNITY_POST_PROCESSING_STACK_V2
     7: UNITY_POST_PROCESSING_STACK_V2
     13: UNITY_POST_PROCESSING_STACK_V2
     14: UNITY_POST_PROCESSING_STACK_V2

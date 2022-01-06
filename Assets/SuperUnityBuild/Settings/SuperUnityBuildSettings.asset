@@ -1,0 +1,166 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-6844592065055289438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97d88f7d353534a4fbdeb11196057db7, type: 3}
+  m_Name: UploadItch
+  m_EditorClassIdentifier: 
+  actionType: 1
+  actionName: UploadItch
+  note: 
+  actionEnabled: 1
+  configureEditor: 0
+  filter:
+    condition: 0
+    clauses: []
+  pathToButlerExe: C:\Users\sand3\AppData\Roaming\itch\apps\butler\butler.exe
+  nameOfItchUser: CapBear
+  nameOfItchGame: Super Box Dasher
+  useGeneratedBuildVersion: 1
+  channelName: $PLATFORM-$ARCHITECTURE
+  showUploadProgress: 0
+  itchChannelOverride: 
+--- !u!114 &-6526848265473947949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0acaf75cc66fc934ea46bf602fc7c245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enabled: 1
+  distributionList:
+    distributions:
+    - distributionName: DistributionName
+      enabled: 1
+  architectures:
+  - target: 20
+    name: WebGL
+    enabled: 1
+    binaryNameFormat: '{0}'
+  variants: []
+  platformName: WebGL
+  dataDirNameFormat: '{0}_Data'
+  targetGroup: 13
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d5886119a5c7b34d8872ab527ca3e1b, type: 3}
+  m_Name: SuperUnityBuildSettings
+  m_EditorClassIdentifier: 
+  _basicSettings:
+    baseBuildFolder: Builds
+    buildPath: $VERSION/$PLATFORM
+    openFolderPostBuild: 1
+  _productParameters:
+    buildCounter: 14
+    buildVersion: 1.0.0.14
+    versionTemplate: 1.0.0.$BUILD
+    autoGenerate: 1
+    syncWithPlayerSettings: 0
+  _releaseTypeList:
+    releaseTypes:
+    - typeName: NewReleaseType
+      bundleIdentifier: com.DefaultCompany.SuperBoxDasher
+      companyName: DefaultCompany
+      productName: Super Box Dasher
+      buildOptions: 0
+      customDefines: 
+      sceneList:
+        enabledScenes: []
+  _platformList:
+    platforms:
+    - {fileID: -6526848265473947949}
+  _projectConfigurations:
+    configSet:
+      _Buckets: ffffffff0300000000000000ffffffffffffffffffffffff02000000
+      _HashCodes: 4355fc5cc976c44dc1643d21494e1b2d000000000000000000000000
+      _Next: ffffffffffffffffffffffff01000000000000000000000000000000
+      _Count: 4
+      _Version: 4
+      _FreeList: -1
+      _FreeCount: 0
+      _Keys:
+      - NewReleaseType/WebGL/WebGL/DistributionName
+      - NewReleaseType/WebGL/WebGL
+      - NewReleaseType/WebGL
+      - NewReleaseType
+      - 
+      - 
+      - 
+      _Values:
+      - enabled: 1
+        childKeys: []
+      - enabled: 1
+        childKeys:
+        - NewReleaseType/WebGL/WebGL/DistributionName
+      - enabled: 1
+        childKeys:
+        - NewReleaseType/WebGL/WebGL
+      - enabled: 1
+        childKeys:
+        - NewReleaseType/WebGL
+      - enabled: 1
+        childKeys: []
+      - enabled: 1
+        childKeys: []
+      - enabled: 1
+        childKeys: []
+    showViewOptions: 0
+    showConfigs: 0
+    showBuildInfo: 0
+    hideDisabled: 0
+    treeView: 0
+    selectedKeyChain: NewReleaseType/WebGL/WebGL/DistributionName
+  _preBuildActions:
+    buildActions: []
+  _postBuildActions:
+    buildActions:
+    - {fileID: 8746943650029215042}
+--- !u!114 &8746943650029215042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97d88f7d353534a4fbdeb11196057db7, type: 3}
+  m_Name: UploadItch
+  m_EditorClassIdentifier: 
+  actionType: 1
+  actionName: UploadItch
+  note: 
+  actionEnabled: 1
+  configureEditor: 0
+  filter:
+    condition: 0
+    clauses:
+    - type: 0
+      comparison: 0
+      test: 
+  pathToButlerExe: C:\Users\sand3\AppData\Roaming\itch\apps\butler\butler.exe
+  nameOfItchUser: capbearz
+  nameOfItchGame: super-box-dasher
+  useGeneratedBuildVersion: 0
+  channelName: window-beta
+  showUploadProgress: 0
+  itchChannelOverride: 

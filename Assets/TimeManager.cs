@@ -7,6 +7,8 @@ public class TimeManager : MonoBehaviour
 {
     public float timer;
     public static event Action<float> timerUpdate;
+    public static event Action killPlayer;
+
 
     // Update is called once per frame
     void Update()
@@ -21,6 +23,8 @@ public class TimeManager : MonoBehaviour
         if(timer <= 0)
 		{
             InputController.Instance.disableInput();
+
+            killPlayer?.Invoke();
 		}
 	
       
