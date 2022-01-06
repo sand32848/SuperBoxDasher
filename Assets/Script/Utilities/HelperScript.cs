@@ -11,6 +11,8 @@ public static class HelperScript
 
 		float elapsed = 0.0f;
 
+		DOTween.Kill(transform,true);
+
 		while (elapsed < Duration)
 		{
 			float x = Random.Range(-1f, 1f) * Power;

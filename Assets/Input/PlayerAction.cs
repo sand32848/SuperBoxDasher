@@ -62,6 +62,15 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Restart"",
+                    ""type"": ""Button"",
+                    ""id"": ""6b317a32-0f83-4aa3-bf30-dbbffcb0f352"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -130,6 +139,17 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""action"": ""MousePos"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d4286ff2-c8da-4f44-b1ad-7fe2c99d5637"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Restart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -142,6 +162,7 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         m_PlayerControl_LeftHold = m_PlayerControl.FindAction("LeftHold", throwIfNotFound: true);
         m_PlayerControl_LeftRelease = m_PlayerControl.FindAction("LeftRelease", throwIfNotFound: true);
         m_PlayerControl_MousePos = m_PlayerControl.FindAction("MousePos", throwIfNotFound: true);
+        m_PlayerControl_Restart = m_PlayerControl.FindAction("Restart", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -205,6 +226,7 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerControl_LeftHold;
     private readonly InputAction m_PlayerControl_LeftRelease;
     private readonly InputAction m_PlayerControl_MousePos;
+    private readonly InputAction m_PlayerControl_Restart;
     public struct PlayerControlActions
     {
         private @PlayerAction m_Wrapper;
@@ -213,6 +235,7 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         public InputAction @LeftHold => m_Wrapper.m_PlayerControl_LeftHold;
         public InputAction @LeftRelease => m_Wrapper.m_PlayerControl_LeftRelease;
         public InputAction @MousePos => m_Wrapper.m_PlayerControl_MousePos;
+        public InputAction @Restart => m_Wrapper.m_PlayerControl_Restart;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -234,6 +257,9 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 @MousePos.started -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnMousePos;
                 @MousePos.performed -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnMousePos;
                 @MousePos.canceled -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnMousePos;
+                @Restart.started -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnRestart;
+                @Restart.performed -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnRestart;
+                @Restart.canceled -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnRestart;
             }
             m_Wrapper.m_PlayerControlActionsCallbackInterface = instance;
             if (instance != null)
@@ -250,6 +276,9 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 @MousePos.started += instance.OnMousePos;
                 @MousePos.performed += instance.OnMousePos;
                 @MousePos.canceled += instance.OnMousePos;
+                @Restart.started += instance.OnRestart;
+                @Restart.performed += instance.OnRestart;
+                @Restart.canceled += instance.OnRestart;
             }
         }
     }
@@ -260,5 +289,6 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         void OnLeftHold(InputAction.CallbackContext context);
         void OnLeftRelease(InputAction.CallbackContext context);
         void OnMousePos(InputAction.CallbackContext context);
+        void OnRestart(InputAction.CallbackContext context);
     }
 }

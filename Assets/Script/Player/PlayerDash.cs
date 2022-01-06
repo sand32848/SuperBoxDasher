@@ -10,6 +10,7 @@ public class PlayerDash : MonoBehaviour
 {
 	[SerializeField] private float DashTime;
 	[SerializeField] private LayerMask layerMask;
+	[SerializeField] private ParticleSystem particle;
 	private PlayerAction playerInputActions;
 	private Camera mainCam;
 	private InputController inputController;
@@ -21,6 +22,7 @@ public class PlayerDash : MonoBehaviour
 		mainCam = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
 		inputController = GetComponent<InputController>();
 		lineRenderer = GetComponent<LineRenderer>();
+
 	}
 
 	private void Update()
@@ -30,6 +32,8 @@ public class PlayerDash : MonoBehaviour
 
     public void Dash()
 	{
+		var emission = particle.emission;
+	
 		Vector2 mousePosition = mainCam.ScreenToWorldPoint(inputController.mousePos);
 
 		Vector2 aimPos = (mousePosition - (Vector2)transform.position).normalized;
@@ -40,9 +44,9 @@ public class PlayerDash : MonoBehaviour
 		{
 			isAiming = true;
 			lineRenderer.enabled = true;
-		
-			
-			if(hit.collider != null)
+			emission.enabled = true;
+
+			if (hit.collider != null)
 			{
 				lineRenderer.SetPosition(0, transform.position);
 				lineRenderer.SetPosition(1, hit.point);
@@ -51,6 +55,7 @@ public class PlayerDash : MonoBehaviour
 
 		if(!inputController.LeftHold && isAiming)
 		{
+			emission.enabled = false;
 			lineRenderer.enabled = false;
 			isAiming = false;
 			transform.DOMove(hit.point,DashTime).SetEase(Ease.OutExpo);
