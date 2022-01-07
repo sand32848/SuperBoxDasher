@@ -12,11 +12,13 @@ public class GameManager : MonoBehaviour
 
 	private void OnEnable()
 	{
+		InputController.Instance.enableInput();
 		Ball.updateBallCount += decraseBallCount;
 	}
 
 	private void OnDisable()
 	{
+		InputController.Instance.disableInput();
 		Ball.updateBallCount += decraseBallCount;
 	}
 	private void Start()
@@ -39,6 +41,7 @@ public class GameManager : MonoBehaviour
 		if(ballCount <= 0)
 		{
 			callWin?.Invoke();
+			InputController.Instance.disableInput();
 		}
 	}
 

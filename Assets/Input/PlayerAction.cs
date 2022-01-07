@@ -71,6 +71,15 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Esc"",
+                    ""type"": ""Button"",
+                    ""id"": ""b821acd2-32e9-4582-aa92-61dc6646762f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -150,6 +159,17 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""action"": ""Restart"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bb04c2be-caa8-42fb-9e13-eb99987b870a"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Esc"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -163,6 +183,7 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         m_PlayerControl_LeftRelease = m_PlayerControl.FindAction("LeftRelease", throwIfNotFound: true);
         m_PlayerControl_MousePos = m_PlayerControl.FindAction("MousePos", throwIfNotFound: true);
         m_PlayerControl_Restart = m_PlayerControl.FindAction("Restart", throwIfNotFound: true);
+        m_PlayerControl_Esc = m_PlayerControl.FindAction("Esc", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -227,6 +248,7 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerControl_LeftRelease;
     private readonly InputAction m_PlayerControl_MousePos;
     private readonly InputAction m_PlayerControl_Restart;
+    private readonly InputAction m_PlayerControl_Esc;
     public struct PlayerControlActions
     {
         private @PlayerAction m_Wrapper;
@@ -236,6 +258,7 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         public InputAction @LeftRelease => m_Wrapper.m_PlayerControl_LeftRelease;
         public InputAction @MousePos => m_Wrapper.m_PlayerControl_MousePos;
         public InputAction @Restart => m_Wrapper.m_PlayerControl_Restart;
+        public InputAction @Esc => m_Wrapper.m_PlayerControl_Esc;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -260,6 +283,9 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 @Restart.started -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnRestart;
                 @Restart.performed -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnRestart;
                 @Restart.canceled -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnRestart;
+                @Esc.started -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnEsc;
+                @Esc.performed -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnEsc;
+                @Esc.canceled -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnEsc;
             }
             m_Wrapper.m_PlayerControlActionsCallbackInterface = instance;
             if (instance != null)
@@ -279,6 +305,9 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 @Restart.started += instance.OnRestart;
                 @Restart.performed += instance.OnRestart;
                 @Restart.canceled += instance.OnRestart;
+                @Esc.started += instance.OnEsc;
+                @Esc.performed += instance.OnEsc;
+                @Esc.canceled += instance.OnEsc;
             }
         }
     }
@@ -290,5 +319,6 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         void OnLeftRelease(InputAction.CallbackContext context);
         void OnMousePos(InputAction.CallbackContext context);
         void OnRestart(InputAction.CallbackContext context);
+        void OnEsc(InputAction.CallbackContext context);
     }
 }

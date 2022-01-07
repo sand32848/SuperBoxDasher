@@ -13,11 +13,13 @@ public class TimeManager : MonoBehaviour
 	private void OnEnable()
 	{
 		GameManager.callWin += stopTimer;
+		RedBall.redBallHit += stopTimer;
 	}
 
 	private void OnDisable()
 	{
 		GameManager.callWin -= stopTimer;
+		RedBall.redBallHit -= stopTimer;
 	}
 
 	// Update is called once per frame

@@ -2824,7 +2824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonSorter: {fileID: 466760479}
-  sceneLoader: {fileID: 0}
+  sceneLoader: {fileID: 1001772203}
 --- !u!114 &1001772203
 MonoBehaviour:
   m_ObjectHideFlags: 0

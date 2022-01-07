@@ -11,5 +11,6 @@ public class RedBall : MonoBehaviour
 	public void hit()
 	{
 		redBallHit?.Invoke();
+		InputController.Instance.disableInput();
 	}
 }
