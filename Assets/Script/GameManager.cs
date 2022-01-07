@@ -6,9 +6,8 @@ using System;
 
 public class GameManager : MonoBehaviour
 {
-
 	int ballCount;
-	public static event Action callWinScreen;
+	public static event Action callWin;
 
 	private void OnEnable()
 	{
@@ -38,7 +37,7 @@ public class GameManager : MonoBehaviour
 	{
 		if(ballCount <= 0)
 		{
-			callWinScreen?.Invoke();
+			callWin?.Invoke();
 		}
 	}
 

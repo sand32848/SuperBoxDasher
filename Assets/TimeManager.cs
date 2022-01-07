@@ -8,17 +8,32 @@ public class TimeManager : MonoBehaviour
     public float timer;
     public static event Action<float> timerUpdate;
     public static event Action killPlayer;
+	private bool isTicking = true;
 
+	private void OnEnable()
+	{
+		GameManager.callWin += stopTimer;
+	}
 
-    // Update is called once per frame
-    void Update()
+	private void OnDisable()
+	{
+		GameManager.callWin -= stopTimer;
+	}
+
+	// Update is called once per frame
+	void Update()
     {
-        timer -= Time.deltaTime;
-
-        if(timerUpdate != null)
+		if (isTicking)
 		{
-            timerUpdate(timer);
-        }
+			timer -= Time.deltaTime;
+		}
+
+		timerUpdate?.Invoke(timer);
+
+  //      if(timerUpdate != null)
+		//{
+  //          timerUpdate(timer);
+  //      }
 
         if(timer <= 0)
 		{
@@ -26,7 +41,10 @@ public class TimeManager : MonoBehaviour
 
             killPlayer?.Invoke();
 		}
-	
-      
     }
+
+	public void stopTimer()
+	{
+		isTicking = false;
+	}
 }

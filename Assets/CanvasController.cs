@@ -11,13 +11,13 @@ public class CanvasController : MonoBehaviour
 	private void OnEnable()
 	{
 		TimeManager.killPlayer += callLoseScreen;
-		GameManager.callWinScreen += callWinScreen;
+		GameManager.callWin += callWinScreen;
 	}
 
 	private void OnDisable()
 	{
 		TimeManager.killPlayer -= callLoseScreen;
-		GameManager.callWinScreen -= callWinScreen;
+		GameManager.callWin -= callWinScreen;
 	}
 
     public void callLoseScreen()
