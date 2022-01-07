@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
 	int ballCount;
 	public static event Action callWin;
+	public static event Action killPlayer;
 
 	private void OnEnable()
 	{
