@@ -16,12 +16,14 @@ public class SceneLoader : MonoBehaviour
 		if (Application.CanStreamedLevelBeLoaded(levelString))
 		{
 			SceneManager.LoadScene(levelString);
+			Time.timeScale = 1;
 		}
 	}
 
 	public void loadCurrentScene()
 	{
-		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+		SceneManager.LoadScene(SceneManager.GetSceneAt(0).name);
+		Time.timeScale = 1;
 	}
 
 	public void loadScene(string sceneName)
@@ -29,6 +31,18 @@ public class SceneLoader : MonoBehaviour
 		if (Application.CanStreamedLevelBeLoaded(sceneName))
 		{
 			SceneManager.LoadScene(sceneName);
+			Time.timeScale = 1;
+		}
+
+	}
+
+	private void Update()
+	{
+		if (InputController.Instance.R)
+		{
+			loadCurrentScene();
+
+			Time.timeScale = 1;
 		}
 
 	}

@@ -7,7 +7,7 @@ public class TimeManager : MonoBehaviour
 {
     public float timer;
     public static event Action<float> timerUpdate;
-    public static event Action killPlayer;
+    public static event Action timeOut;
 	private bool isTicking = true;
 
 	private void OnEnable()
@@ -32,16 +32,11 @@ public class TimeManager : MonoBehaviour
 
 		timerUpdate?.Invoke(timer);
 
-  //      if(timerUpdate != null)
-		//{
-  //          timerUpdate(timer);
-  //      }
-
         if(timer <= 0)
 		{
             InputController.Instance.disableInput();
 
-            killPlayer?.Invoke();
+            timeOut?.Invoke();
 		}
     }
 

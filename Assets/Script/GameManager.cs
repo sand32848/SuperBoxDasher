@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
+using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,26 +14,23 @@ public class GameManager : MonoBehaviour
 	private void OnEnable()
 	{
 		InputController.Instance.enableInput();
-		Ball.updateBallCount += decraseBallCount;
+		Ball.GreenBallHit += decraseBallCount;
 	}
 
 	private void OnDisable()
 	{
 		InputController.Instance.disableInput();
-		Ball.updateBallCount += decraseBallCount;
+		Ball.GreenBallHit += decraseBallCount;
 	}
 	private void Start()
 	{
+		DOTween.SetTweensCapacity(2500, 50);
 		ballCount = GameObject.FindGameObjectsWithTag("Ball").Length;
+		Time.timeScale = 1;
 	}
 
 	void Update()
     {
-		if (InputController.Instance.R)
-		{
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
-		}
-
 		CheckBallCount();
     }
 
@@ -40,13 +38,20 @@ public class GameManager : MonoBehaviour
 	{
 		if(ballCount <= 0)
 		{
-			callWin?.Invoke();
 			InputController.Instance.disableInput();
+			StartCoroutine(winSlowmo());
 		}
 	}
 
 	public void decraseBallCount()
 	{
 		ballCount -= 1;
+	}
+
+	IEnumerator winSlowmo()
+	{
+		Time.timeScale = 0.3f;
+		yield return new WaitForSeconds(1f);
+		callWin?.Invoke();
 	}
 }

@@ -8,7 +8,7 @@ public class PlayerDeath : MonoBehaviour
 
 	private void OnEnable()
 	{
-		TimeManager.killPlayer += Death;
+		TimeManager.timeOut += Death;
 		RedBall.redBallHit += Death;
 
 	}
@@ -16,7 +16,7 @@ public class PlayerDeath : MonoBehaviour
 	private void OnDisable()
 	{
 		RedBall.redBallHit -= Death;
-		TimeManager.killPlayer -= Death;
+		TimeManager.timeOut -= Death;
 	}
 	
 	public void Death()

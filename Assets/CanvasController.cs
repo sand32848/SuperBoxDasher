@@ -10,19 +10,23 @@ public class CanvasController : MonoBehaviour
 
 	private void OnEnable()
 	{
-		TimeManager.killPlayer += callLoseScreen;
+		TimeManager.timeOut += callLoseScreen;
 		GameManager.callWin += callWinScreen;
 		RedBall.redBallHit += callLoseScreen;
 	}
 
 	private void OnDisable()
 	{
-		TimeManager.killPlayer -= callLoseScreen;
+		TimeManager.timeOut -= callLoseScreen;
 		GameManager.callWin -= callWinScreen;
 		RedBall.redBallHit -= callLoseScreen;
 	}
-
-    public void callLoseScreen()
+	private void Start()
+	{
+		winUI.SetActive(false);
+		lostUI.SetActive(false);
+	}
+	public void callLoseScreen()
 	{
 		if (!winUI.activeSelf)
 		{

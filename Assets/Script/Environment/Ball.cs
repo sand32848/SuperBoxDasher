@@ -5,12 +5,12 @@ using System;
 
 public class Ball : MonoBehaviour
 {
-	public static event Action updateBallCount;
+	public static event Action GreenBallHit;
 	[SerializeField] private GameObject particle;
     public void hit()
 	{
-		updateBallCount?.Invoke();
-	   Instantiate(particle, transform.position, Quaternion.identity);
+		GreenBallHit?.Invoke();
+	    Instantiate(particle, transform.position, Quaternion.identity);
 		Destroy(gameObject);
 		
 	}

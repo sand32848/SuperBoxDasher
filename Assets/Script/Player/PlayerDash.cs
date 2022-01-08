@@ -58,7 +58,7 @@ public class PlayerDash : MonoBehaviour
 			emission.enabled = false;
 			lineRenderer.enabled = false;
 			isAiming = false;
-			transform.DOMove(hit.point,DashTime).SetEase(Ease.OutExpo);
+			transform.DOMove(hit.point,DashTime).SetEase(Ease.OutExpo).SetId("Player");
 			//mousePosition
 			StartCoroutine(mainCam.transform.Shake(0.2f, 0.5f));
 		}
