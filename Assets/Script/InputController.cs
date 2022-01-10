@@ -38,6 +38,7 @@ public class InputController : MonoBehaviour
     public Vector2 mousePos => inputActions.PlayerControl.MousePos.ReadValue<Vector2>();
     public bool R => inputActions.PlayerControl.Restart.triggered;
     public bool ESC => inputActions.PlayerControl.Esc.triggered;
+    public bool LeftClick => inputActions.PlayerControl.LeftClick.triggered;
 
 
     //public float RightHold => inputActions.PlayerControl.RightHold.ReadValue<float>();

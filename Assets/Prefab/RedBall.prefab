@@ -128,7 +128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbf36d9362508884e8b4dd91e7af18ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particle: {fileID: 0}
+  particle: {fileID: 8965656440917617678, guid: 087ba96e658e03b49a7ea37c94b36622, type: 3}
+  _collider: {fileID: 3720837083139978833}
 --- !u!50 &3720837081987446924
 Rigidbody2D:
   serializedVersion: 4
@@ -199,7 +200,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3720837081987446925}
         m_TargetAssemblyTypeName: RedBall, Assembly-CSharp
-        m_MethodName: hit
+        m_MethodName: callHitCor
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -209,6 +210,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  layers: 6
 --- !u!58 &3720837083139978833
 CircleCollider2D:
   m_ObjectHideFlags: 0

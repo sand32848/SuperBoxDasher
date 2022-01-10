@@ -23,6 +23,6 @@ public class PlayerMovement : MonoBehaviour
 
 	public void MovePlayer(Vector2 dir = new Vector2())
 	{
-        rb.velocity = dir * speed  * Time.deltaTime;
+        rb.velocity =new Vector2(0,0) * Time.deltaTime;
 	}
 }
