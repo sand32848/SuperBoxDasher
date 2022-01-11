@@ -42,8 +42,8 @@ public class TransitionManager : MonoBehaviour
 
         sequence.Append(Panel.DOAnchorPosX(0, 0.4f).OnComplete(() => SceneManager.LoadScene(sceneName)));
         sequence.Append(Panel.DOAnchorPosX(0, 0.1f));
-        sequence.Append(Panel.DOAnchorPosX(422, 0.4f));
-        sequence.Append(Panel.DOAnchorPosX(-422, 0f));
+        sequence.Append(Panel.DOAnchorPosX(800, 0.4f));
+        sequence.Append(Panel.DOAnchorPosX(-800, 0f));
 
         //Panel.DOAnchorPosX(0, 3f).OnComplete(() => 
         //{

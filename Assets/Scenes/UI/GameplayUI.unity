@@ -1852,7 +1852,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1035492915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2360,6 +2360,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 731450061, guid: 3c8b0c7fe0ecea44d84cacad781952dd, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 731450061, guid: 3c8b0c7fe0ecea44d84cacad781952dd, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -377
+      objectReference: {fileID: 0}
     - target: {fileID: 731450062, guid: 3c8b0c7fe0ecea44d84cacad781952dd, type: 3}
       propertyPath: m_Type
       value: 0
@@ -2454,11 +2462,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6080793377448593194, guid: 3c8b0c7fe0ecea44d84cacad781952dd, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 28
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6080793377448593194, guid: 3c8b0c7fe0ecea44d84cacad781952dd, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -14
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c8b0c7fe0ecea44d84cacad781952dd, type: 3}

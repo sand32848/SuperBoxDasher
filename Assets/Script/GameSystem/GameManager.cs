@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
 using DG.Tweening;
+using System.Text.RegularExpressions;
 
 public class GameManager : MonoBehaviour
 {
@@ -55,6 +56,7 @@ public class GameManager : MonoBehaviour
 		if(ballCount <= 0)
 		{
 			InputController.Instance.inputActions.Disable();
+	
 			StartCoroutine(winSlowmo());
 		}
 	}
@@ -66,9 +68,25 @@ public class GameManager : MonoBehaviour
 
 	IEnumerator winSlowmo()
 	{
+		save();
 		Time.timeScale = 0.3f;
 		callWinPre?.Invoke();
 		yield return new WaitForSeconds(0.5f);
 		callWin?.Invoke();
+	}
+	public void save()
+	{
+		string resultString = Regex.Match(SceneManager.GetSceneAt(0).name, @"\d+").Value;
+		int level = int.Parse(resultString);
+
+		
+
+		if (SaveData.current.levelStat.ContainsKey(level + 1) && SaveData.current.levelStat[level +1] == false)
+		{
+			print(level);
+			SaveData.current.levelStat[level + 1] = true;
+		}
+
+		SaveData.current.OnSave();
 	}
 }

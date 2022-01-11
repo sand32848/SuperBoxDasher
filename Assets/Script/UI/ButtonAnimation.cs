@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(EventTrigger))]
 public class ButtonAnimation : MonoBehaviour
 {
 	EventTrigger eventTrigger;
+	Button button;
 
 	private void Start()
 	{
+		button = GetComponent<Button>();
 		eventTrigger = GetComponent<EventTrigger>();
 
-		
 		EventTrigger.Entry pointerEnter = new EventTrigger.Entry();
 		pointerEnter.eventID = EventTriggerType.PointerDown;
 		pointerEnter.callback.AddListener((data) => { OnPointerDownDelegate((PointerEventData)data); });
@@ -31,12 +33,17 @@ public class ButtonAnimation : MonoBehaviour
 
 	public void ButtonExit()
 	{
+
 			transform.DOScale(1, 0.3f).SetUpdate(true);
 	}
 
 	public void OnPointerClickDelegate(PointerEventData data)
 	{
-		AudioManager.instance.Play("ButtonClick");
+		if (button.interactable == false)
+		{
+			return;
+		}
+		AudioManager.instance?.Play("ButtonClick");
 	}
 
 	public void OnPointerDownDelegate(PointerEventData data)

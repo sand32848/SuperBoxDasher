@@ -26,7 +26,7 @@ public class Ending : MonoBehaviour
     {
 		inputController = GetComponent<InputController>();
 		camera = GameObject.FindWithTag("MainCamera");
-		AudioManager.instance.LerpMute("MainTheme");
+		AudioManager.instance?.LerpMute("MainTheme");
 	}
 
     // Update is called once per frame
@@ -69,9 +69,12 @@ public class Ending : MonoBehaviour
 			sequence.Append(player.transform.DOMove(new Vector3(2.05999994f, 0.5f, 0), 0.5f).SetEase(Ease.Linear).OnComplete(() => {congratUI.SetActive(true); }));
 			sequence.Append(player.transform.DOMove(new Vector3(2.05999994f, 0.5f, 0), 0f).OnComplete(() => { AudioManager.instance?.Play("MainTheme",0.15f); }));
 			sequence.Append(player.transform.DOMove(new Vector3(2.05999994f, 0.5f, 0), 0f).OnComplete(() => { backgroundParticle.SetActive(true); }));
-			sequence.Append(player.transform.DOMove(new Vector3(2.05999994f, 0.5f, 0), 0f).OnComplete(() => { player.transform.DOMove(new Vector3(-1.44000006f, -0.03f, 0), 1f).SetLoops(-1,LoopType.Yoyo); }));
+			//-1.44,-0.03 ori 2.059,0.5
+			//-1.44, -0.1 /  2.059,0.1
+			sequence.Append(player.transform.DOMove(new Vector3(2.05999994f, 0.5f, 0), 0f).OnComplete(() => { player.transform.DOMove(new Vector3(-1.44000006f, -0.1f, 0), 1f).SetLoops(-1,LoopType.Yoyo); }));
 
-			sequence.Insert(2,congratText1.GetComponent<RectTransform>().DOAnchorPos(new Vector3(-24, 169, 0), 2f).SetEase(Ease.OutQuad));
+			//new -24,131 ori -24,169 
+			sequence.Insert(2,congratText1.GetComponent<RectTransform>().DOAnchorPos(new Vector3(-24, 131, 0), 2f).SetEase(Ease.OutQuad));
 			sequence.Insert(2,congratText2.GetComponent<RectTransform>().DOAnchorPos(new Vector3(-13, -176, 0), 2f).SetEase(Ease.OutQuad));
 			sequence.Insert(2, mainMenuButton.GetComponent<RectTransform>().DOAnchorPos(new Vector3(251, -255, 0), 2f).SetEase(Ease.OutQuad));
 

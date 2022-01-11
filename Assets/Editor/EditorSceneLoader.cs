@@ -28,7 +28,7 @@ class MyClass
     [MenuItem("MyMenu/Do Something %g")]
     static void loadTestScene()
 	{
-        EditorSceneManager.OpenScene("Assets/Scenes/GameplayUI.unity", OpenSceneMode.Additive);
+        EditorSceneManager.OpenScene("Assets/Scenes/UI/GameplayUI.unity", OpenSceneMode.Additive);
     }
 #endif
 }
