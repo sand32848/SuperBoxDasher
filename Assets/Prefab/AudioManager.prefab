@@ -74,3 +74,15 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: Dead
+    clip: {fileID: 8300000, guid: b6682a38bc698ba47b9b1cfddb10f729, type: 3}
+    volume: 0.387
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ButtonClick
+    clip: {fileID: 8300000, guid: e25e1a886abad1f4dbc800a859ec5199, type: 3}
+    volume: 0.387
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}

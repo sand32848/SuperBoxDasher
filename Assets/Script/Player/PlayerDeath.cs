@@ -24,6 +24,7 @@ public class PlayerDeath : MonoBehaviour
 	
 	public void Death()
 	{
+		AudioManager.instance?.Play("Dead");
 		Destroy(gameObject);
 		Instantiate(particle, transform.position, Quaternion.identity);
 	}

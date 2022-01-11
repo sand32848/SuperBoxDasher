@@ -42,15 +42,4 @@ public class SceneLoader : MonoBehaviour
 
 	}
 
-	private void Update()
-	{
-		if (InputController.Instance.R)
-		{
-			loadCurrentScene();
-
-			Time.timeScale = 1;
-		}
-
-	}
-
 }
