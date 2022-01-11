@@ -83,7 +83,6 @@ public class GameManager : MonoBehaviour
 
 		if (SaveData.current.levelStat.ContainsKey(level + 1) && SaveData.current.levelStat[level +1] == false)
 		{
-			print(level);
 			SaveData.current.levelStat[level + 1] = true;
 		}
 
