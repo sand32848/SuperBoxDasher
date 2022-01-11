@@ -68,7 +68,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   postProcess: {fileID: 724133640}
   bloomVar: 5
-  chromaVar: 2
+  chromaVar: 1.5
   bloomVarDefault: 0.2
   chromaVarDefault: 0
   testing: 0

@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 	public static event Action callWinPre;
 	public static event Action callWin;
 	public static event Action killPlayer;
+	public static event Action pause;
 
 	private void OnEnable()
 	{
@@ -25,13 +26,27 @@ public class GameManager : MonoBehaviour
 	}
 	private void Start()
 	{
-
 		ballCount = GameObject.FindGameObjectsWithTag("Ball").Length;
 		Time.timeScale = 1;
 	}
 
 	void Update()
     {
+		if (InputController.Instance && InputController.Instance.ESC)
+		{
+			if (Time.timeScale == 0)
+			{
+				InputController.Instance.enableInput();
+				Time.timeScale = 1;
+			}
+			else
+			{
+				InputController.Instance.disableInput();
+				Time.timeScale = 0;
+			}
+			
+			pause?.Invoke();
+		}
 		CheckBallCount();
     }
 
@@ -39,7 +54,7 @@ public class GameManager : MonoBehaviour
 	{
 		if(ballCount <= 0)
 		{
-			InputController.Instance.disableInput();
+			InputController.Instance.inputActions.Disable();
 			StartCoroutine(winSlowmo());
 		}
 	}

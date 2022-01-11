@@ -37,7 +37,7 @@ public class InputController : MonoBehaviour
     public bool LeftHold => inputActions.PlayerControl.LeftHold.ReadValue<float>() > 0.1f;
     public Vector2 mousePos => inputActions.PlayerControl.MousePos.ReadValue<Vector2>();
     public bool R => inputActions.PlayerControl.Restart.triggered;
-    public bool ESC => inputActions.PlayerControl.Esc.triggered;
+    public bool ESC => inputActions.UI.Esc.triggered;
     public bool LeftClick => inputActions.PlayerControl.LeftClick.triggered;
 
 
@@ -54,11 +54,11 @@ public class InputController : MonoBehaviour
 
     public void enableInput()
 	{
-        inputActions.Enable();
+        inputActions.PlayerControl.Enable();
 	}
 
     public void disableInput()
 	{
-        inputActions.Disable();
+        inputActions.PlayerControl.Disable();
     }
 }

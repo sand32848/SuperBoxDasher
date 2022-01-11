@@ -6,12 +6,14 @@ public class CanvasController : MonoBehaviour
 {
     [SerializeField] private GameObject lostUI;
     [SerializeField] private GameObject winUI;
+	[SerializeField] private GameObject pauseUI;
 	// Start is called before the first frame update
 
 	private void OnEnable()
 	{
 		TimeManager.timeOut += callLoseScreen;
 		GameManager.callWin += callWinScreen;
+		GameManager.pause += callPause;
 		Red.redHit += callLoseScreen;
 
 	}
@@ -20,6 +22,7 @@ public class CanvasController : MonoBehaviour
 	{
 		TimeManager.timeOut -= callLoseScreen;
 		GameManager.callWin -= callWinScreen;
+		GameManager.pause -= callPause;
 		Red.redHit -= callLoseScreen;
 	}
 	private void Start()
@@ -38,5 +41,10 @@ public class CanvasController : MonoBehaviour
 	public void callWinScreen()
 	{
 		winUI.SetActive(true);
+	}
+
+	public void callPause()
+	{
+		pauseUI.SetActive(true);
 	}
 }

@@ -14,15 +14,24 @@ public class PlayerDash : MonoBehaviour
 	[SerializeField] private LayerMask layerMask;
 	[SerializeField] private ParticleSystem particle;
 	[SerializeField] private GameObject sprite;
+	[SerializeField] private GameObject wallParticle;
+
+	#region resourceRef
 	private PlayerAction playerInputActions;
 	private Camera mainCam;
 	private InputController inputController;
-	private bool isAiming = false;
 	private LineRenderer lineRenderer;
 	private Rigidbody2D rb;
+	#endregion
+
+	#region variable
+	private bool isAiming = false;
 	private float DashCooldown = 0.4f;
 	private float _DashCooldown;
-	
+	private Vector2 ColliderPos;
+	private Vector2 particlePos;
+	#endregion
+
 
 	private void Start()
     {
@@ -47,7 +56,9 @@ public class PlayerDash : MonoBehaviour
 
 		Vector2 aimPos = (mousePosition - (Vector2)transform.position).normalized;
 
-		RaycastHit2D hit = Physics2D.Raycast(transform.position, aimPos, 50000, layerMask);
+		RaycastHit2D hit = Physics2D.Raycast(transform.position, aimPos, 10000, layerMask);
+
+
 
 		if (inputController.LeftClick)
 		{
@@ -60,6 +71,9 @@ public class PlayerDash : MonoBehaviour
 
 		if (inputController.LeftHold && DashCooldown <= 0)
 		{
+			particlePos = hit.point;
+			ColliderPos = ((Vector2)transform.position - particlePos).normalized;
+
 			isAiming = true;
 			lineRenderer.enabled = true;
 			emission.enabled = true;
@@ -95,6 +109,9 @@ public class PlayerDash : MonoBehaviour
 	public void KillDash()
 	{
 		DOTween.Kill("Dash");
+
+		GameObject p = Instantiate(wallParticle,particlePos,Quaternion.LookRotation(ColliderPos));
+		Destroy(p, 1);
 
 		StartCoroutine(PlayerFloat());
 	}

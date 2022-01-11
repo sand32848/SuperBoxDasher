@@ -73,15 +73,6 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Esc"",
-                    ""type"": ""Button"",
-                    ""id"": ""b821acd2-32e9-4582-aa92-61dc6646762f"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""LeftClick"",
                     ""type"": ""Button"",
                     ""id"": ""601426c0-5a34-487d-9bd8-6e1515ee05b2"",
@@ -171,23 +162,40 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""bb04c2be-caa8-42fb-9e13-eb99987b870a"",
-                    ""path"": ""<Keyboard>/escape"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Esc"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""73dc54c4-849d-40b7-a150-14d64b8931ef"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""LeftClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""UI"",
+            ""id"": ""9d444240-06f7-435c-9566-aab027b99409"",
+            ""actions"": [
+                {
+                    ""name"": ""Esc"",
+                    ""type"": ""Button"",
+                    ""id"": ""c9e0a538-c6e1-4ba0-b008-51937e80c8d9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""923226a1-d823-4270-9b2a-a46276cabbc2"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Esc"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -203,8 +211,10 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         m_PlayerControl_LeftRelease = m_PlayerControl.FindAction("LeftRelease", throwIfNotFound: true);
         m_PlayerControl_MousePos = m_PlayerControl.FindAction("MousePos", throwIfNotFound: true);
         m_PlayerControl_Restart = m_PlayerControl.FindAction("Restart", throwIfNotFound: true);
-        m_PlayerControl_Esc = m_PlayerControl.FindAction("Esc", throwIfNotFound: true);
         m_PlayerControl_LeftClick = m_PlayerControl.FindAction("LeftClick", throwIfNotFound: true);
+        // UI
+        m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
+        m_UI_Esc = m_UI.FindAction("Esc", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -269,7 +279,6 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerControl_LeftRelease;
     private readonly InputAction m_PlayerControl_MousePos;
     private readonly InputAction m_PlayerControl_Restart;
-    private readonly InputAction m_PlayerControl_Esc;
     private readonly InputAction m_PlayerControl_LeftClick;
     public struct PlayerControlActions
     {
@@ -280,7 +289,6 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         public InputAction @LeftRelease => m_Wrapper.m_PlayerControl_LeftRelease;
         public InputAction @MousePos => m_Wrapper.m_PlayerControl_MousePos;
         public InputAction @Restart => m_Wrapper.m_PlayerControl_Restart;
-        public InputAction @Esc => m_Wrapper.m_PlayerControl_Esc;
         public InputAction @LeftClick => m_Wrapper.m_PlayerControl_LeftClick;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControl; }
         public void Enable() { Get().Enable(); }
@@ -306,9 +314,6 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 @Restart.started -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnRestart;
                 @Restart.performed -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnRestart;
                 @Restart.canceled -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnRestart;
-                @Esc.started -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnEsc;
-                @Esc.performed -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnEsc;
-                @Esc.canceled -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnEsc;
                 @LeftClick.started -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnLeftClick;
                 @LeftClick.performed -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnLeftClick;
                 @LeftClick.canceled -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnLeftClick;
@@ -331,9 +336,6 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 @Restart.started += instance.OnRestart;
                 @Restart.performed += instance.OnRestart;
                 @Restart.canceled += instance.OnRestart;
-                @Esc.started += instance.OnEsc;
-                @Esc.performed += instance.OnEsc;
-                @Esc.canceled += instance.OnEsc;
                 @LeftClick.started += instance.OnLeftClick;
                 @LeftClick.performed += instance.OnLeftClick;
                 @LeftClick.canceled += instance.OnLeftClick;
@@ -341,6 +343,39 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         }
     }
     public PlayerControlActions @PlayerControl => new PlayerControlActions(this);
+
+    // UI
+    private readonly InputActionMap m_UI;
+    private IUIActions m_UIActionsCallbackInterface;
+    private readonly InputAction m_UI_Esc;
+    public struct UIActions
+    {
+        private @PlayerAction m_Wrapper;
+        public UIActions(@PlayerAction wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Esc => m_Wrapper.m_UI_Esc;
+        public InputActionMap Get() { return m_Wrapper.m_UI; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(UIActions set) { return set.Get(); }
+        public void SetCallbacks(IUIActions instance)
+        {
+            if (m_Wrapper.m_UIActionsCallbackInterface != null)
+            {
+                @Esc.started -= m_Wrapper.m_UIActionsCallbackInterface.OnEsc;
+                @Esc.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnEsc;
+                @Esc.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnEsc;
+            }
+            m_Wrapper.m_UIActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Esc.started += instance.OnEsc;
+                @Esc.performed += instance.OnEsc;
+                @Esc.canceled += instance.OnEsc;
+            }
+        }
+    }
+    public UIActions @UI => new UIActions(this);
     public interface IPlayerControlActions
     {
         void OnPlayerMovement(InputAction.CallbackContext context);
@@ -348,7 +383,10 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         void OnLeftRelease(InputAction.CallbackContext context);
         void OnMousePos(InputAction.CallbackContext context);
         void OnRestart(InputAction.CallbackContext context);
-        void OnEsc(InputAction.CallbackContext context);
         void OnLeftClick(InputAction.CallbackContext context);
+    }
+    public interface IUIActions
+    {
+        void OnEsc(InputAction.CallbackContext context);
     }
 }

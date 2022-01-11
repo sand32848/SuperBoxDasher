@@ -221,8 +221,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -304,7 +304,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &166858340
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1025,6 +1025,8 @@ MonoBehaviour:
   congratText1: {fileID: 2096943899}
   congratText2: {fileID: 1496713117}
   congratUI: {fileID: 166858339}
+  mainMenuButton: {fileID: 1563866914}
+  panel: {fileID: 174319306}
 --- !u!114 &650029865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1597,7 +1599,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0.44, y: -8.464, z: 2.955}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 13, y: -176}
+  m_AnchoredPosition: {x: 59, y: -422}
   m_SizeDelta: {x: 819.29, y: 228.61}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1496713119
@@ -1808,6 +1810,8 @@ GameObject:
   - component: {fileID: 1563866917}
   - component: {fileID: 1563866916}
   - component: {fileID: 1563866915}
+  - component: {fileID: 1563866919}
+  - component: {fileID: 1563866918}
   m_Layer: 5
   m_Name: 'MainMenu '
   m_TagString: Untagged
@@ -1824,7 +1828,7 @@ RectTransform:
   m_GameObject: {fileID: 1563866913}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5125947, y: 0.5125947, z: 0.5125947}
+  m_LocalScale: {x: 1, y: 1, z: 0.5125947}
   m_Children:
   - {fileID: 123989810}
   m_Father: {fileID: 166858340}
@@ -1832,8 +1836,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 309.2, y: -259.3}
-  m_SizeDelta: {x: 235.49, y: 67.74}
+  m_AnchoredPosition: {x: 251.12, y: -424}
+  m_SizeDelta: {x: 225.73, y: 47.92}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1563866915
 MonoBehaviour:
@@ -1929,6 +1933,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1563866913}
   m_CullTransparentMesh: 1
+--- !u!114 &1563866918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1563866913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07073eacdf222b042ab28fe2703bec44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1563866919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1563866913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1563866918}
+          m_TargetAssemblyTypeName: ButtonAnimation, Assembly-CSharp
+          m_MethodName: ButtonHover
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1563866918}
+          m_TargetAssemblyTypeName: ButtonAnimation, Assembly-CSharp
+          m_MethodName: ButtonExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &1660953377
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2316,7 +2377,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 1.02, y: -8.414, z: 6.862}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -24, y: 169}
+  m_AnchoredPosition: {x: -257, y: 498}
   m_SizeDelta: {x: 775.97, y: 112.86}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2096943901
