@@ -1,8 +1,7 @@
 # SuperBoxDasher
 Super box dasher, an action platfromer made for the 💥 [JUICE JAM](https://itch.io/jam/gdb-juice-jam/rate/1342302) 💥 | [Game Page](https://capbearz.itch.io/super-box-dasher)
 
-<img src='./GifDemo/UYKjqN.gif'/>
-![](https://github.com/sand32848/SuperBoxDasher/GifDemo/UYKjqN.gif)
+![](https://github.com/sand32848/SuperBoxDasher/tree/master/GifDemo/UYKjqN.gif)
 
 ## Gameplay Sample
 ![Eqtwwv](https://user-images.githubusercontent.com/54356212/223158028-5619345b-2310-49c1-89cf-ab56a0768781.gif)
