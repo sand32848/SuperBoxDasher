@@ -4,9 +4,9 @@ Super box dasher, an action platfromer made for the 💥 [JUICE JAM](https://itc
 ![](https://github.com/sand32848/SuperBoxDasher/blob/master/GifDemo/UYKjqN.gif)
 
 ## Gameplay Image
-![https://github.com/sand32848/SuperBoxDasher/blob/master/GifDemo/0ByPMZ.gif]()
-
-<img src="https://github.com/sand32848/SuperBoxDasher/blob/master/GifDemo/0ByPMZ.gif">
+![](https://github.com/sand32848/SuperBoxDasher/blob/master/GifDemo/0ByPMZ.gif)
+![](https://github.com/sand32848/SuperBoxDasher/blob/master/GifDemo/cfN7sl.gif)
+![](https://github.com/sand32848/SuperBoxDasher/blob/master/GifDemo/Eqtwwv.gif)
 
 ## Credit
 * [Dotween](http://dotween.demigiant.com/index.php) - Demigiant
