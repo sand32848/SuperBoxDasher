@@ -79,8 +79,6 @@ public class GameManager : MonoBehaviour
 		string resultString = Regex.Match(SceneManager.GetSceneAt(0).name, @"\d+").Value;
 		int level = int.Parse(resultString);
 
-		
-
 		if (SaveData.current.levelStat.ContainsKey(level + 1) && SaveData.current.levelStat[level +1] == false)
 		{
 			SaveData.current.levelStat[level + 1] = true;

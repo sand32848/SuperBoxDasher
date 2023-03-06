@@ -16,8 +16,10 @@ public class PostProcessController : MonoBehaviour
 
 	[SerializeField] float bloomVar;
 	[SerializeField] float chromaVar;
+	[SerializeField] float lensVar;
 	[SerializeField] float bloomVarDefault;
 	[SerializeField] float chromaVarDefault;
+	[SerializeField] float lensVarDefault;
 	[SerializeField] private bool testing = false;
 
 
@@ -62,6 +64,9 @@ public class PostProcessController : MonoBehaviour
 
 		DOTween.To(() => chromaticAberration.intensity.value, x => chromaticAberration.intensity.value = x, chromaVar, 0.1f).SetId("Effect").OnComplete(() =>
 		{ DOTween.To(() => chromaticAberration.intensity.value, x => chromaticAberration.intensity.value = x, chromaVarDefault, 0.2f).SetId("Effect"); });
+
+		DOTween.To(() => lensDistortion.intensity.value, x => lensDistortion.intensity.value = x, lensVar, 0.1f).SetId("Effect").OnComplete(() =>
+		{ DOTween.To(() => lensDistortion.intensity.value, x => lensDistortion.intensity.value = x, lensVarDefault, 0.2f).SetId("Effect"); });
 	}
 
 	public void PostHitKill()

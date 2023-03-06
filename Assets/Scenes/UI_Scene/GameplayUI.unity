@@ -411,6 +411,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 530f81b8f80e23247883a77cc2ffb632, type: 2}
     - target: {fileID: 724133641, guid: dfd1c1407f8d6bd4b91979168467b16c, type: 3}
+      propertyPath: lensVar
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 724133641, guid: dfd1c1407f8d6bd4b91979168467b16c, type: 3}
+      propertyPath: bloomVar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 724133641, guid: dfd1c1407f8d6bd4b91979168467b16c, type: 3}
+      propertyPath: chromaVar
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 724133641, guid: dfd1c1407f8d6bd4b91979168467b16c, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -2376,6 +2388,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TransitionCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6080793376447054293, guid: 3c8b0c7fe0ecea44d84cacad781952dd, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6080793376447054295, guid: 3c8b0c7fe0ecea44d84cacad781952dd, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2466,7 +2482,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6080793377448593194, guid: 3c8b0c7fe0ecea44d84cacad781952dd, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -604
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c8b0c7fe0ecea44d84cacad781952dd, type: 3}
