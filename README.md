@@ -1,7 +1,7 @@
 # SuperBoxDasher
 ![](https://github.com/sand32848/SuperBoxDasher/blob/master/GifDemo/UYKjqN.gif)
 
-Super box dasher, an action platfromer made for the 💥 [JUICE JAM](https://itch.io/jam/gdb-juice-jam/rate/1342302) 💥 | [Game Page](https://capbearz.itch.io/super-box-dasher)
+Super box dasher, an action platfromer made for the 💥 [JUICE JAM](https://itch.io/jam/gdb-juice-jam/rate/1342302) 💥 | [Game Page](https://capbearz.itch.io/super-box-dasher) / [Commentary] https://apiwatr.wixsite.com/portfolio/post/super-box-dasher-independent
 
 You play as a box guy collecting green orb by dasing between obstacle and avoiding any danger in the way!
 
