@@ -6,9 +6,12 @@ Super box dasher, an action platfromer made for the 💥 [JUICE JAM](https://itc
 You play as a box guy collecting green orb by dasing between obstacle and avoiding any danger in the way!
 
 ## Game montage
-![](https://github.com/sand32848/SuperBoxDasher/blob/master/GifDemo/0ByPMZ.gif)
-![](https://github.com/sand32848/SuperBoxDasher/blob/master/GifDemo/cfN7sl.gif)
-![](https://github.com/sand32848/SuperBoxDasher/blob/master/GifDemo/Eqtwwv.gif)
+
+<p float="left">
+<img src="https://github.com/sand32848/SuperBoxDasher/blob/master/GifDemo/0ByPMZ.gif" width="30%" />
+<img src="https://github.com/sand32848/SuperBoxDasher/blob/master/GifDemo/cfN7sl.gif" width="30%" />
+<img src="https://github.com/sand32848/SuperBoxDasher/blob/master/GifDemo/Eqtwwv.gif" width="30%" />
+</p>
 
 ## Credit
 * [Dotween](http://dotween.demigiant.com/index.php) - Demigiant
